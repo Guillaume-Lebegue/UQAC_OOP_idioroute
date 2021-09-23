@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="idioroute:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/idioroute_jar</output-path>
+    <root id="archive" name="idioroute.jar">
+      <element id="module-output" name="idioroute" />
+    </root>
+  </artifact>
+</component>

@@ -1,5 +1,5 @@
 package com.ikkino.idioroute.car;
 
-public class CarManagerReport extends Exception{
+public class CarManagerReport {
 
 }

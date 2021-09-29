@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CarManager {
-    private List<ABCar> allCars;
+    private List<Car> allCars;
     private CarBuilder carBuilder;
 
     public CarManager(){
@@ -13,14 +13,14 @@ public class CarManager {
     }
 
     public CarManagerReport driveCars(){
-        for (ABCar car: allCars) {
+        for (Car car: allCars) {
             car.drive();
         }
         return null;
     }
 
     public CarManagerReport checkCollisions(){
-        for (ABCar car: allCars) {
+        for (Car car: allCars) {
             car.checkCollision();
         }
         return null;

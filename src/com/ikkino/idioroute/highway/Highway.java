@@ -1,10 +1,10 @@
-package com.ikkino.idioroute.Highway;
+package com.ikkino.idioroute.highway;
 
 public class Highway {
     private float radius;
-    private AbMaterial material;
+    private Material material;
 
-    public Highway(float radius, AbMaterial material){
+    public Highway(float radius, Material material){
         this.radius = radius;
         this.material = material;
     }

@@ -1,7 +1,7 @@
 package com.ikkino.idioroute.car;
 
 public class CarBuilder {
-    public ABCar createCar(){
+    public Car createCar(){
         return null;
     }
 }

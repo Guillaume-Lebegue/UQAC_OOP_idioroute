@@ -2,11 +2,11 @@ package com.ikkino.idioroute.car;
 
 import java.util.List;
 
-public class ABCar {
+public abstract class Car {
     private float position;
     private float lastPosition;
     private float enterPosition;
-    private List<AbOption> optionList;
+    private List<Option> optionList;
 
     public void drive(){}
 
@@ -28,7 +28,7 @@ public class ABCar {
         this.enterPosition = enterPosition;
     }
 
-    public void setOptionList(List<AbOption> optionList){
+    public void setOptionList(List<Option> optionList){
         this.optionList = optionList;
     }
 }

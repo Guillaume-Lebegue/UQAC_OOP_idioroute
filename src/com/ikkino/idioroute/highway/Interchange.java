@@ -1,4 +1,4 @@
-package com.ikkino.idioroute.Highway;
+package com.ikkino.idioroute.highway;
 
 public class Interchange {
     private Highway interchangeUp;

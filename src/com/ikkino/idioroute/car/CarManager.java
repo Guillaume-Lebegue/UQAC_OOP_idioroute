@@ -8,11 +8,13 @@ public class CarManager {
     private CarBuilder carBuilder;
 
     public CarManager(){
+        // TODO Implement
         allCars = new ArrayList<>();
         carBuilder = new CarBuilder();
     }
 
     public CarManagerReport driveCars(){
+        // TODO Implement
         for (Car car: allCars) {
             car.drive();
         }
@@ -20,6 +22,7 @@ public class CarManager {
     }
 
     public CarManagerReport checkCollisions(){
+        // TODO Implement
         for (Car car: allCars) {
             car.checkCollision();
         }

@@ -28,7 +28,13 @@ final public class CarManager {
 
     @Nullable
     public CarManagerReport checkCollisions(){
-        allCars.forEach(Car::checkCollision);
+        try {
+            for(Car car: allCars){
+                car.checkCollision();
+            }
+        }catch (Breakdown breakdown){
+
+        }
         return null;
     }
 }

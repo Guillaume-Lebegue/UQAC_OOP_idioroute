@@ -4,10 +4,10 @@ import com.ikkino.idioroute.car.CarManager;
 
 import java.util.List;
 
-public class HighwayManager {
-    private CarManager carManager;
-    private HighwayBuilder highwayBuilder;
-    private List<Highway> highwayList;
+final public class HighwayManager {
+    final private CarManager carManager;
+    final private HighwayBuilder highwayBuilder;
+    final private List<Highway> highwayList;
 
     public HighwayManager(){
         // TODO Implement

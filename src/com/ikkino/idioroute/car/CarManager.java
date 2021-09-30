@@ -2,30 +2,33 @@ package com.ikkino.idioroute.car;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.jetbrains.annotations.Nullable;
 
-public class CarManager {
-    private List<Car> allCars;
-    private CarBuilder carBuilder;
+final public class CarManager {
+    final private List<Car> allCars;
+    final private CarBuilder carBuilder;
 
     public CarManager(){
-        // TODO Implement
         allCars = new ArrayList<>();
         carBuilder = new CarBuilder();
     }
 
-    public CarManagerReport driveCars(){
-        // TODO Implement
-        for (Car car: allCars) {
-            car.drive();
-        }
+    @Nullable
+    public CarManagerReport addCar(){
+        Car newCar = carBuilder.createCar();
+        allCars.add(newCar);
         return null;
     }
 
+    @Nullable
+    public CarManagerReport driveCars(){
+        allCars.forEach(Car::drive);
+        return null;
+    }
+
+    @Nullable
     public CarManagerReport checkCollisions(){
-        // TODO Implement
-        for (Car car: allCars) {
-            car.checkCollision();
-        }
+        allCars.forEach(Car::checkCollision);
         return null;
     }
 }

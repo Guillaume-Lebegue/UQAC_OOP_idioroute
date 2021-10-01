@@ -1,6 +1,6 @@
 ckage com.ikkino.idioroute.highway;
 
-public class Ciment extends Highway implements Material{
+public class Ciment implements Material{
 
     private final float coefficient = 0.8;
 
@@ -12,9 +12,4 @@ public class Ciment extends Highway implements Material{
         return this.coefficient;
     }
 
-
-    public Asphalte(float radius, Material material, float coefficient) {
-        super(radius, material);
-        this.coefficient = coefficient;
-    }
 }

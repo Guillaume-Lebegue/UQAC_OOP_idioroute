@@ -7,7 +7,6 @@ import java.util.List;
 public class Highway {
     private float radius;
     private Material material;
-    protected float coefficient;
     private List<Car> allCars;
     private List<Interchange> allInterchange;
 

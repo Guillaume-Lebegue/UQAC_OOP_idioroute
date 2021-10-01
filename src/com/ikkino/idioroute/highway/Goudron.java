@@ -1,6 +1,6 @@
 ckage com.ikkino.idioroute.highway;
 
-public class Goudron extends Highway implements Material{
+public class Goudron implements Material{
 
     private final float coefficient = 1;
 
@@ -10,11 +10,5 @@ public class Goudron extends Highway implements Material{
 
     public float getCoefficient(){
         return this.coefficient;
-    }
-
-
-    public Asphalte(float radius, Material material, float coefficient) {
-        super(radius, material);
-        this.coefficient = coefficient;
     }
 }

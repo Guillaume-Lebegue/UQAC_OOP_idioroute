@@ -2,7 +2,7 @@ package com.ikkino.idioroute.highway;
 
 public class Asphalte extends Highway implements Material{
 
-    private float coefficient;
+    private final float coefficient = 0.6;
 
     public float getSpeed(float speed){
         return speed * coefficient;
@@ -10,10 +10,6 @@ public class Asphalte extends Highway implements Material{
 
     public float getCoefficient(){
         return this.coefficient;
-    }
-
-    private float setCoefficient(float newCoefficient){
-        this.coefficient = newCoefficient;
     }
 
     public Asphalte(float radius, Material material, float coefficient) {

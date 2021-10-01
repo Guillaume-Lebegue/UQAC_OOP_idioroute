@@ -2,7 +2,7 @@ ckage com.ikkino.idioroute.highway;
 
 public class Goudron extends Highway implements Material{
 
-    private float coefficient;
+    private final float coefficient = 1;
 
     public float getSpeed(float speed){
         return speed * coefficient;
@@ -12,9 +12,6 @@ public class Goudron extends Highway implements Material{
         return this.coefficient;
     }
 
-    private float setCoefficient(float newCoefficient){
-        this.coefficient = newCoefficient;
-    }
 
     public Asphalte(float radius, Material material, float coefficient) {
         super(radius, material);

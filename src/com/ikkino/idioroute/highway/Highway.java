@@ -34,5 +34,12 @@ public class Highway {
 
     public void carChangeHighway(Car car, Interchange interchange){
         // TODO Implement
+        allCars.remove(car);
+        if(interchange.getInterchangeUp() == this ){
+            interchange.getInterchangeDown().allCars.add(car);
+        }
+        else{
+            interchange.getInterchangeUp().allCars.add(car);
+        }
     }
 }

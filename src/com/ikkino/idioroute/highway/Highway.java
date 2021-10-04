@@ -1,6 +1,7 @@
 package com.ikkino.idioroute.highway;
 
 import com.ikkino.idioroute.car.Car;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
@@ -32,14 +33,18 @@ public class Highway {
         return allInterchange;
     }
 
-    public void carChangeHighway(Car car, Interchange interchange){
+    public void carChangeHighway(Car car, @NotNull Interchange interchange){
         // TODO Implement
         allCars.remove(car);
         if(interchange.getInterchangeUp() == this ){
             interchange.getInterchangeDown().allCars.add(car);
+            car.setHighway(interchange.getInterchangeDown());
         }
         else{
-            interchange.getInterchangeUp().allCars.add(car);
+            if(interchange.getInterchangeUp() != null) {
+                interchange.getInterchangeUp().allCars.add(car);
+                car.setHighway(interchange.getInterchangeUp());
+            }
         }
     }
 }

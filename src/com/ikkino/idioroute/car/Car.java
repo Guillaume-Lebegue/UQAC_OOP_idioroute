@@ -11,13 +11,18 @@ public abstract class Car {
     private float position;
     private float lastPosition;
     private float enterPosition;
-    private float speed; // Valeur en m/s
-    private float degreesTraveled;
-    private boolean hasCompleteTour;
+    private float degreesTraveled = 0;
+    private boolean hasCompleteTour = false;
     private List<Option> optionList;
     private Highway highway;
+    protected float speed; // Valeur en m/s
 
-    public void drive(){
+    public Car(Highway highway, float enterPosition){
+        setHighway(highway);
+        setEnterPosition(enterPosition);
+    }
+
+    public final void drive(){
         // TODO Implement
         final float elapsedTime = 10; // 10 secondes
         float radius = highway.getRadius();
@@ -38,30 +43,35 @@ public abstract class Car {
         }
     }
 
-    public void checkCollision() throws Breakdown{
+    public final void checkCollision() throws Breakdown{
         // TODO Implement
         List<Car> carsOnHighway = highway.getAllCars();
         for(Car car : carsOnHighway){
             if(car != this){
                 if(car.getPosition() > lastPosition && car.getPosition() < position){
-                    throw new Breakdown() {
-                        @Override
-                        public String getMessage() {
-                            return super.getMessage() + " Accident !";
-                        }
-                    };
+                    if(!tryToFindInterchange()) {
+                        throw new Breakdown() {
+                            @Override
+                            public String getMessage() {
+                                return super.getMessage() + " Accident !";
+                            }
+                        };
+                    }
                 }
             }
         }
     }
 
-    private void tryToFindInterchange(){
+    private boolean tryToFindInterchange(){
         List<Interchange> interchangesOnHighway = highway.getAllInterchange();
         for(Interchange interchange: interchangesOnHighway){
             if(interchange.getPosition() < position && interchange.getPosition() > lastPosition){
                 highway.carChangeHighway(this, interchange);
+                setEnterPosition(interchange.getPosition());
+                return true;
             }
         }
+        return false;
     }
 
     public float getPosition(){
@@ -76,12 +86,18 @@ public abstract class Car {
         return enterPosition;
     }
 
-    public void setEnterPosition(float enterPosition){
+    private void setEnterPosition(float enterPosition){
         this.enterPosition = enterPosition;
+        this.lastPosition = enterPosition;
+        setPosition(enterPosition);
     }
 
-    public void setOptionList(List<Option> optionList){
+    protected final void setOptionList(List<Option> optionList){
         // TODO Implement
         this.optionList = optionList;
+    }
+
+    public final void setHighway(Highway highway){
+        this.highway = highway;
     }
 }

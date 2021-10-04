@@ -33,6 +33,10 @@ public class Highway {
         return allInterchange;
     }
 
+    public void setAllInterchange(List<Interchange> interchanges) {
+        this.allInterchange = interchanges;
+    }
+
     public void carChangeHighway(Car car, @NotNull Interchange interchange){
         // TODO Implement
         allCars.remove(car);

@@ -17,9 +17,7 @@ public abstract class Car {
     private Highway highway;
     protected float speed; // Valeur en m/s
 
-    public Car(Highway highway, float enterPosition){
-        setHighway(highway);
-        setEnterPosition(enterPosition);
+    public Car(){
     }
 
     public final void drive(){
@@ -78,7 +76,7 @@ public abstract class Car {
         return position;
     }
 
-    private void setPosition(float position){
+    public void setPosition(float position){
         this.position = position;
     }
 

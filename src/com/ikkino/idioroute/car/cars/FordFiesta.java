@@ -11,8 +11,8 @@ import java.util.List;
 public class FordFiesta extends Car {
     private final float MYSPEED = 18f;
 
-    public FordFiesta(Highway highway, float enterPosition){
-        super(highway, enterPosition);
+    public FordFiesta(){
+        super();
         this.speed = MYSPEED;
         List<Option> optionList = new ArrayList<>();
         optionList.add(new Climatisation());

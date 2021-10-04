@@ -12,8 +12,8 @@ import java.util.List;
 public class Ferrari extends Car {
     private final float MYSPEED = 25f;
 
-    public Ferrari(Highway highway, float enterPosition){
-        super(highway, enterPosition);
+    public Ferrari(){
+        super();
         this.speed = MYSPEED;
         List<Option> optionList = new ArrayList<>();
         optionList.add(new Radio());

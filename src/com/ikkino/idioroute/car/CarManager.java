@@ -6,16 +6,16 @@ import org.jetbrains.annotations.Nullable;
 
 final public class CarManager {
     final private List<Car> allCars;
-    final private CarBuilder carBuilder;
+    final private CarFactory carFactory;
 
     public CarManager(){
         allCars = new ArrayList<>();
-        carBuilder = new CarBuilder();
+        carFactory = new CarFactory();
     }
 
     @Nullable
     public CarManagerReport addCar(){
-        Car newCar = carBuilder.createCar();
+        Car newCar = carFactory.createCar();
         allCars.add(newCar);
         return null;
     }

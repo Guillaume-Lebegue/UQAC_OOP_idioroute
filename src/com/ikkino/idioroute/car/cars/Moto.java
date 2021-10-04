@@ -11,8 +11,8 @@ import java.util.List;
 public class Moto extends Car {
     private final float MYSPEED = 20f;
 
-    public Moto(Highway highway, float enterPosition){
-        super(highway, enterPosition);
+    public Moto(){
+        super();
         this.speed = MYSPEED;
         List<Option> optionList = new ArrayList<>();
         optionList.add(new Radio());

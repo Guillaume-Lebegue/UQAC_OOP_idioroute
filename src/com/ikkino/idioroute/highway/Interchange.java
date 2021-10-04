@@ -5,11 +5,11 @@ public class Interchange {
     private Highway interchangeDown;
     private float position; // value in degrees
 
-    public Interchange(Highway interchangeDown, Highway interchangeUp, float position){
+    public Interchange(){
         // TODO Implement
-        this.interchangeDown = interchangeDown;
-        this.interchangeUp = interchangeUp;
-        this.position = position;
+        this.interchangeDown = null;
+        this.interchangeUp = null;
+        this.position = -1;
     }
 
     public Interchange(Highway interchangeDown, float position){
@@ -41,5 +41,9 @@ public class Interchange {
 
     public float getPosition(){
         return position;
+    }
+
+    public void setPosition(float position) {
+        this.position = position;
     }
 }

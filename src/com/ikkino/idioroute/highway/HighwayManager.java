@@ -7,13 +7,13 @@ import java.util.List;
 final public class HighwayManager {
     final private CarManager carManager;
     final private HighwayBuilder highwayBuilder;
-    final private List<Highway> highwayList;
+    final private Highway highway;
 
     public HighwayManager(){
         // TODO Implement
         carManager = new CarManager();
         highwayBuilder = new HighwayBuilder();
-        highwayList = highwayBuilder.createHighway(5);
+        highway = highwayBuilder.createHighway(5);
     }
 
     public void start(){

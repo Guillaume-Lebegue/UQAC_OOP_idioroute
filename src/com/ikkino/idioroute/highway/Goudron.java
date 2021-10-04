@@ -1,4 +1,4 @@
-ckage com.ikkino.idioroute.highway;
+package com.ikkino.idioroute.highway;
 
 public class Goudron implements Material{
 

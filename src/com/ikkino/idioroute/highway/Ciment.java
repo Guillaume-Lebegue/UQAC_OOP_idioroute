@@ -1,8 +1,8 @@
-ckage com.ikkino.idioroute.highway;
+package com.ikkino.idioroute.highway;
 
-public class Ciment implements Material{
+public class Ciment implements Material {
 
-    public final float coefficient = 0.8;
+    public final float coefficient = 0.8f;
 
     public float getSpeed(float speed){
         return speed * coefficient;

@@ -14,6 +14,7 @@ public class Moto extends Car {
     public Moto(){
         super();
         this.speed = MYSPEED;
+        this.name = "Moto";
         List<Option> optionList = new ArrayList<>();
         optionList.add(new Radio());
         setOptionList(optionList);

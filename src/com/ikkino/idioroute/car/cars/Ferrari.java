@@ -15,6 +15,7 @@ public class Ferrari extends Car {
     public Ferrari(){
         super();
         this.speed = MYSPEED;
+        this.name = "Ferrari";
         List<Option> optionList = new ArrayList<>();
         optionList.add(new Radio());
         optionList.add(new Climatisation());

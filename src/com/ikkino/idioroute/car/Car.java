@@ -1,9 +1,12 @@
 package com.ikkino.idioroute.car;
 
+import com.ikkino.idioroute.car.breakdowns.Crash;
+import com.ikkino.idioroute.car.breakdowns.OutOfFuel;
 import com.ikkino.idioroute.highway.Highway;
 import com.ikkino.idioroute.highway.Interchange;
 
 import java.util.List;
+import java.util.Random;
 
 import static java.lang.Math.PI;
 
@@ -16,27 +19,34 @@ public abstract class Car {
     private List<Option> optionList;
     private Highway highway;
     protected float speed; // Valeur en m/s
+    protected String name  = "Car";
+    private Breakdown breakdown;
 
     public Car(){
     }
 
     public final void drive(){
         // TODO Implement
-        final float elapsedTime = 10; // 10 secondes
-        float radius = highway.getRadius();
-        float speed = highway.getSpeed(this.speed);
-        lastPosition = position;
-        float distanceHighway = (float)PI * 2 * radius;
-        float distanceTraveled = speed * elapsedTime;
-        float degreesTraveled = distanceTraveled / distanceHighway * 3.6f;
-        this.degreesTraveled += degreesTraveled;
-        position += degreesTraveled;
-        position = position % 360;
-        if(hasCompleteTour){
-            tryToFindInterchange();
-        }else {
-            if (this.degreesTraveled > 360) {
-                hasCompleteTour = true;
+        if(breakdown == null) {
+            final float elapsedTime = 10; // 10 secondes
+            float radius = highway.getRadius();
+            float speed = highway.getSpeed(this.speed);
+            lastPosition = position;
+            float distanceHighway = (float) PI * 2 * radius;
+            float distanceTraveled = speed * elapsedTime;
+            float degreesTraveled = distanceTraveled / distanceHighway * 3.6f;
+            this.degreesTraveled += degreesTraveled;
+            position += degreesTraveled;
+            position = position % 360;
+            if (hasCompleteTour) {
+                tryToFindInterchange();
+            } else {
+                if (this.degreesTraveled > 360) {
+                    hasCompleteTour = true;
+                }
+            }
+            if(Math.random() < 0.01f){
+                breakdown = new OutOfFuel();
             }
         }
     }
@@ -48,12 +58,8 @@ public abstract class Car {
             if(car != this){
                 if(car.getPosition() > lastPosition && car.getPosition() < position){
                     if(!tryToFindInterchange()) {
-                        throw new Breakdown() {
-                            @Override
-                            public String getMessage() {
-                                return super.getMessage() + " Accident !";
-                            }
-                        };
+                        breakdown = new Crash();
+                        throw breakdown;
                     }
                 }
             }
@@ -97,5 +103,15 @@ public abstract class Car {
 
     public final void setHighway(Highway highway){
         this.highway = highway;
+    }
+
+    public final void display(){
+        System.out.println("Je suis un(e) " + name + ". Je suis en position " + position +" et voici ma liste d'option :");
+        for (Option opt: optionList) {
+            opt.run();
+        }
+        if(breakdown != null){
+            System.out.println("J'ai actuellement un problème : " + breakdown.getMessage());
+        }
     }
 }

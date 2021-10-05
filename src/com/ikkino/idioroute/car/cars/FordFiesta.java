@@ -14,6 +14,7 @@ public class FordFiesta extends Car {
     public FordFiesta(){
         super();
         this.speed = MYSPEED;
+        this.name = "Ford Fiesta";
         List<Option> optionList = new ArrayList<>();
         optionList.add(new Climatisation());
         setOptionList(optionList);

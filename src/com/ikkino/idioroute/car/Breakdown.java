@@ -1,8 +1,18 @@
 package com.ikkino.idioroute.car;
 
 public abstract class Breakdown extends Exception {
-// TODO Implement
+
+    private Car concernedCar;
+
+    public Breakdown(Car concernedCar){
+        this.concernedCar = concernedCar;
+    }
+
     public String getMessage() {
         return super.getMessage() + " Accident !";
+    }
+
+    public Car getConcernedCar(){
+        return concernedCar;
     }
 }

@@ -46,7 +46,7 @@ public abstract class Car {
                 }
             }
             if(Math.random() < 0.01f){
-                breakdown = new OutOfFuel();
+                breakdown = new OutOfFuel(this);
             }
         }
     }
@@ -58,7 +58,7 @@ public abstract class Car {
             if(car != this){
                 if(car.getPosition() > lastPosition && car.getPosition() < position){
                     if(!tryToFindInterchange()) {
-                        breakdown = new Crash();
+                        breakdown = new Crash(this);
                         throw breakdown;
                     }
                 }

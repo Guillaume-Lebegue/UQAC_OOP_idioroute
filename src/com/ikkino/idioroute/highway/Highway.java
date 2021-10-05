@@ -3,6 +3,7 @@ package com.ikkino.idioroute.highway;
 import com.ikkino.idioroute.car.Car;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Highway {
@@ -15,6 +16,7 @@ public class Highway {
         // TODO Implement
         this.radius = radius;
         this.material = material;
+        this.allCars = new ArrayList<>();
     }
 
     public float getRadius() {

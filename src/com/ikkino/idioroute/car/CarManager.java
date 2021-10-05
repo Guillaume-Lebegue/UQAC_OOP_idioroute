@@ -2,7 +2,11 @@ package com.ikkino.idioroute.car;
 
 import java.util.ArrayList;
 import java.util.List;
-import org.jetbrains.annotations.Nullable;
+import java.util.Random;
+import java.util.stream.Collectors;
+
+import com.ikkino.idioroute.highway.Highway;
+import com.ikkino.idioroute.highway.Interchange;
 
 final public class CarManager {
     final private List<Car> allCars;
@@ -13,21 +17,22 @@ final public class CarManager {
         carFactory = new CarFactory();
     }
 
-    @Nullable
-    public CarManagerReport addCar(){
+    public void addCar(Highway where) throws CarManagerReport {
+        List<Interchange> upInterchange = where.getAllInterchange().stream().filter(interchange -> interchange.getInterchangeDown() == where).collect(
+                Collectors.toList());
+        int pick = new Random().nextInt(upInterchange.size());
         Car newCar = carFactory.createCar();
+
         allCars.add(newCar);
-        return null;
+        where.carChangeHighway(newCar, upInterchange.get(pick));
+        newCar.setHighway(where);
     }
 
-    @Nullable
-    public CarManagerReport driveCars(){
+    public void driveCars() throws  CarManagerReport {
         allCars.forEach(Car::drive);
-        return null;
     }
 
-    @Nullable
-    public CarManagerReport checkCollisions(){
+    public void checkCollisions() throws CarManagerReport {
         try {
             for(Car car: allCars){
                 car.checkCollision();
@@ -35,6 +40,9 @@ final public class CarManager {
         }catch (Breakdown breakdown){
 
         }
-        return null;
+    }
+
+    public CarManagerReport createReport(String reason) {
+        return new CarManagerReport(this.allCars, reason);
     }
 }

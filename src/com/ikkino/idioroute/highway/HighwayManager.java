@@ -9,7 +9,6 @@ final public class HighwayManager {
     final private Highway highway;
 
     public HighwayManager(){
-        // TODO Implement
         this.carManager = new CarManager();
         this.highwayBuilder = new HighwayBuilder();
         this.highway = this.highwayBuilder.createHighway(5);

@@ -27,7 +27,6 @@ public abstract class Car {
     }
 
     public final void drive(){
-        // TODO Implement
         if(breakdown == null) {
             final float elapsedTime = 60; // 60 secondes
             float radius = highway.getRadius();
@@ -54,7 +53,6 @@ public abstract class Car {
     }
 
     public final void checkCollision() throws Breakdown{
-        // TODO Implement
         List<Car> carsOnHighway = highway.getAllCars();
         for(Car car : carsOnHighway){
             if(car != this){
@@ -101,7 +99,6 @@ public abstract class Car {
     }
 
     protected final void setOptionList(List<Option> optionList){
-        // TODO Implement
         this.optionList = optionList;
     }
 

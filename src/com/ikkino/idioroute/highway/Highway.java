@@ -14,7 +14,6 @@ public class Highway {
     private List<Interchange> allInterchange;
 
     public Highway(float radius, Material material, int index){
-        // TODO Implement
         this.radius = radius;
         this.material = material;
         this.allCars = new ArrayList<>();
@@ -44,7 +43,6 @@ public class Highway {
     }
 
     public void carChangeHighway(Car car, @NotNull Interchange interchange){
-        // TODO Implement
         allCars.remove(car);
         if(interchange.getInterchangeUp() == this ){
             interchange.getInterchangeDown().allCars.add(car);

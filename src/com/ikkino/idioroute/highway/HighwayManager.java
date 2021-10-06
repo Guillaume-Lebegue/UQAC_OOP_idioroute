@@ -12,7 +12,7 @@ final public class HighwayManager {
         // TODO Implement
         this.carManager = new CarManager();
         this.highwayBuilder = new HighwayBuilder();
-        this.highway = this.highwayBuilder.createHighway(2);
+        this.highway = this.highwayBuilder.createHighway(5);
     }
 
     public void start(){

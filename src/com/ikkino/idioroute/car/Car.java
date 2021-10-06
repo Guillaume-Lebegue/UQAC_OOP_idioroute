@@ -115,7 +115,7 @@ public abstract class Car {
         display.add("\tOptions:");
         optionList.forEach(option -> display.add("\t\t" + option.run()) );
         if(breakdown != null)
-            display.add(" Problème : " + breakdown.getMessage());
+            display.add(" Problème : " + breakdown.getMessage() + " sur l'autoroute n°" + highway.getIndex());
         return display;
     }
 }

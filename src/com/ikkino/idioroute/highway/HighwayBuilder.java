@@ -12,7 +12,7 @@ public class HighwayBuilder {
 
         for (int i = 0; i < nbOfHighways; i++) {
             System.out.println("Creating highway: " + i + " with radius = " + radius);
-            highways.add(new Highway(radius, new Asphalte()));
+            highways.add(new Highway(radius, new Asphalte(), i+1));
             radius -= radius / nbOfHighways;
         }
         return highways;

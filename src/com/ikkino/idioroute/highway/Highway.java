@@ -7,17 +7,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Highway {
+    private final int index;
     private float radius;
     private Material material;
     private List<Car> allCars;
     private List<Interchange> allInterchange;
 
-    public Highway(float radius, Material material){
+    public Highway(float radius, Material material, int index){
         // TODO Implement
         this.radius = radius;
         this.material = material;
         this.allCars = new ArrayList<>();
+        this.index = index;
     }
+
+    public int getIndex(){return index;}
 
     public float getRadius() {
         return radius;

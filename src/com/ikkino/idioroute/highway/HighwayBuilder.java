@@ -63,7 +63,9 @@ public class HighwayBuilder {
         for (int i = 0; i < nbOfHighways; i++) {
             System.out.println("For highway: " + i);
             List<Interchange> intersUp = createInterchanges(rand.nextInt((3 - 1) + 1) + 1);
-            List<Interchange> intersDown = createInterchanges(rand.nextInt((3 - 1) + 1) + 1);
+            List<Interchange> intersDown = new ArrayList<>();
+            if(i != nbOfHighways - 1)
+                intersDown = createInterchanges(rand.nextInt((3 - 1) + 1) + 1);
             if (i == 0) {
                 setInterchangesHighways(null, highways.get(i), highways.get(i + 1), intersUp, intersDown);
             } else if (i == nbOfHighways - 1) {

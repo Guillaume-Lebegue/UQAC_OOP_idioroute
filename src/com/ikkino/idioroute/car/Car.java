@@ -29,7 +29,7 @@ public abstract class Car {
     public final void drive(){
         // TODO Implement
         if(breakdown == null) {
-            final float elapsedTime = 10; // 10 secondes
+            final float elapsedTime = 60; // 60 secondes
             float radius = highway.getRadius();
             float speed = highway.getSpeed(this.speed);
             lastPosition = position;
@@ -46,7 +46,8 @@ public abstract class Car {
                     hasCompleteTour = true;
                 }
             }
-            if(Math.random() < 0.01f){
+            if(Math.random() < 0.001f){
+                System.out.println(getDisplay() + " Je n'ai plus d'essence !");
                 breakdown = new OutOfFuel(this);
             }
         }
@@ -59,8 +60,10 @@ public abstract class Car {
             if(car != this){
                 if(car.getPosition() > lastPosition && car.getPosition() < position){
                     if(!tryToFindInterchange()) {
-                        breakdown = new Crash(this);
+                        breakdown = new Crash(this, car);
                         throw breakdown;
+                    }else{
+                        System.out.println("Accident évité !");
                     }
                 }
             }
@@ -111,6 +114,8 @@ public abstract class Car {
         display.add(name + ", position " + position);
         display.add("\tOptions:");
         optionList.forEach(option -> display.add("\t\t" + option.run()) );
+        if(breakdown != null)
+            display.add(" Problème : " + breakdown.getMessage());
         return display;
     }
 }

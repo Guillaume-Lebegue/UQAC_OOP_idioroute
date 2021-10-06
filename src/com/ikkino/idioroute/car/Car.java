@@ -47,7 +47,7 @@ public abstract class Car {
                 }
             }
             if(Math.random() < 0.001f){
-                System.out.println(getDisplay() + " Je n'ai plus d'essence !");
+                System.out.println(getDisplay() + " Je n'ai plus d'essence sur l'autoroute n°" + highway.getIndex());
                 breakdown = new OutOfFuel(this);
             }
         }
@@ -58,7 +58,7 @@ public abstract class Car {
         List<Car> carsOnHighway = highway.getAllCars();
         for(Car car : carsOnHighway){
             if(car != this){
-                if(car.getPosition() > lastPosition && car.getPosition() < position){
+                if(car.getPosition() >= lastPosition && car.getPosition() <= position){
                     if(!tryToFindInterchange()) {
                         breakdown = new Crash(this, car);
                         throw breakdown;
@@ -117,5 +117,9 @@ public abstract class Car {
         if(breakdown != null)
             display.add(" Problème : " + breakdown.getMessage() + " sur l'autoroute n°" + highway.getIndex());
         return display;
+    }
+
+    public final boolean deleteMe(){
+        return highway == null;
     }
 }

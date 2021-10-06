@@ -37,8 +37,14 @@ final public class CarManager {
 
     public void checkCollisions() throws CarManagerReport {
         try {
-            for(Car car: allCars){
+            for (int i = 0; i < allCars.size(); i++){
+                Car car = allCars.get(i);
                 car.checkCollision();
+                if(car.deleteMe()){
+                    allCars.remove(car);
+                    i--;
+                    System.out.println("Je sors de l'autoroute !");
+                }
             }
         }catch (Breakdown breakdown){
             throw createReport(breakdown.getMessage(), breakdown.getConcernedCar());

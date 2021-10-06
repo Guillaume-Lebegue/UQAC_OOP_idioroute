@@ -53,8 +53,8 @@ public class Highway {
         else{
             if(interchange.getInterchangeUp() != null) {
                 interchange.getInterchangeUp().allCars.add(car);
-                car.setHighway(interchange.getInterchangeUp());
             }
+            car.setHighway(interchange.getInterchangeUp());
         }
     }
 }

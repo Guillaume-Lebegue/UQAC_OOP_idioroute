@@ -35,12 +35,14 @@ final public class HighwayManager {
         System.out.println("===================================================");
         System.out.println("Idioroute was shutdown");
 
-        if (report.getConcernedCar() != null)
-            System.out.println("Concerned car: " + report.getConcernedCar().toString());
+        if (report.getConcernedCar() != null) {
+            System.out.println("Concerned car: ");
+            report.getConcernedCar().getDisplay().forEach(System.out::println);
+        }
         System.out.println("Reason: " + report.getReason());
 
         System.out.println();
         System.out.println("Car data dump:");
-        report.getAllCars().forEach((car) -> System.out.println(car.toString()));
+        report.getAllCars().forEach((car) -> car.getDisplay().forEach(System.out::println));
     }
 }

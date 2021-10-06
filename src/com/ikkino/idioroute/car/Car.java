@@ -5,6 +5,7 @@ import com.ikkino.idioroute.car.breakdowns.OutOfFuel;
 import com.ikkino.idioroute.highway.Highway;
 import com.ikkino.idioroute.highway.Interchange;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -105,13 +106,11 @@ public abstract class Car {
         this.highway = highway;
     }
 
-    public final void display(){
-        System.out.println("Je suis un(e) " + name + ". Je suis en position " + position +" et voici ma liste d'option :");
-        for (Option opt: optionList) {
-            opt.run();
-        }
-        if(breakdown != null){
-            System.out.println("J'ai actuellement un problème : " + breakdown.getMessage());
-        }
+    public final List<String> getDisplay(){
+        List<String> display = new ArrayList<>();
+        display.add(name + ", position " + position);
+        display.add("\tOptions:");
+        optionList.forEach(option -> display.add("\t\t" + option.run()) );
+        return display;
     }
 }

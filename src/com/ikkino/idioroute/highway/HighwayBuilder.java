@@ -5,14 +5,17 @@ import java.util.List;
 import java.util.Random;
 
 public class HighwayBuilder {
+    final private List <Material> materials = new ArrayList<>(List.of(new Asphalte(), new Ciment(), new Goudron(), new Pave()));
 
     private List<Highway> createAllHighways(int nbOfHighways) {
         List<Highway> highways = new ArrayList<>();
         float radius = 200;
+        Random rand = new Random();
 
         for (int i = 0; i < nbOfHighways; i++) {
-            System.out.println("Creating highway: " + i + " with radius = " + radius);
-            highways.add(new Highway(radius, new Asphalte(), i+1));
+            int materialId = rand.nextInt(this.materials.size());
+            System.out.println("Creating highway: " + i + " with radius = " + radius + " and with material: " + materialId);
+            highways.add(new Highway(radius, this.materials.get(materialId), i+1));
             radius -= radius / nbOfHighways;
         }
         return highways;

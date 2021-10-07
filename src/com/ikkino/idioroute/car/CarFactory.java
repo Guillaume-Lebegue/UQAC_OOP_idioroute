@@ -5,25 +5,17 @@ import com.ikkino.idioroute.car.cars.FordFiesta;
 import com.ikkino.idioroute.car.cars.Moto;
 import com.ikkino.idioroute.car.cars.Truck;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class CarFactory {
 
-    private enum CarType {
-        FERRARI,
-        FORDFIESTA,
-        MOTO,
-        TRUCK,
-    }
+    final private List<Car> carTypes = new ArrayList<>(List.of(new Ferrari(), new FordFiesta(), new Moto(), new Truck()));
 
     public Car createCar(){
-        int pick = new Random().nextInt(CarType.values().length);
+        Random rand = new Random();
 
-        switch (CarType.values()[pick]) {
-            case FERRARI -> { return new Ferrari(); }
-            case FORDFIESTA -> { return new FordFiesta(); }
-            case MOTO -> { return new Moto(); }
-            default -> { return new Truck(); }
-        }
+        return carTypes.get(rand.nextInt(this.carTypes.size()));
     }
 }

@@ -7,11 +7,12 @@ import com.ikkino.idioroute.highway.Interchange;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import static java.lang.Math.PI;
 
 public abstract class Car {
+    private final CarManager manager;
+
     private float position;
     private float lastPosition;
     private float enterPosition;
@@ -23,11 +24,12 @@ public abstract class Car {
     protected String name  = "Car";
     private Breakdown breakdown;
 
-    public Car(){
+    public Car(CarManager manager){
+        this.manager = manager;
     }
 
     public final void drive(){
-        if(breakdown == null) {
+        if(breakdown == null && highway != null) {
             final float elapsedTime = 60; // 60 secondes
             float radius = highway.getRadius();
             float speed = highway.getSpeed(this.speed);
@@ -80,6 +82,10 @@ public abstract class Car {
         return false;
     }
 
+    public void getOut() {
+        this.manager.removeCar(this);
+    }
+
     public float getPosition(){
         return position;
     }
@@ -111,8 +117,7 @@ public abstract class Car {
         display.add(name + ", position " + position);
         display.add("\tOptions:");
         optionList.forEach(option -> display.add("\t\t" + option.run()) );
-        if(breakdown != null)
-            display.add(" Problème : " + breakdown.getMessage() + " sur l'autoroute n°" + highway.getIndex());
+
         return display;
     }
 

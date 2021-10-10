@@ -15,14 +15,14 @@ final public class HighwayManager {
     }
 
     public void start(){
-        int loop = 100;
+        int loop = 200;
         try {
             //noinspection InfiniteLoopStatement
             while (true) {
                 this.carManager.addCar(this.highway);
                 this.carManager.driveCars();
                 this.carManager.checkCollisions();
-                if (loop-- <= 0) throw this.carManager.createReport("Loop stop", null);
+                if (loop-- <= 0) throw this.carManager.createReport("Idioroute stop for the night");
             }
         } catch (CarManagerReport report) {
             this.displayReport(report);

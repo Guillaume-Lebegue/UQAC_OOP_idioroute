@@ -15,7 +15,7 @@ final public class CarManager {
 
     public CarManager(){
         allCars = new ArrayList<>();
-        carFactory = new CarFactory();
+        carFactory = new CarFactory(this);
     }
 
     public void addCar(Highway where) throws CarManagerReport {
@@ -27,6 +27,10 @@ final public class CarManager {
         allCars.add(newCar);
         where.carChangeHighway(newCar, upInterchange.get(pick));
         newCar.setHighway(where);
+    }
+
+    public void removeCar(Car car) {
+        allCars.remove(car);
     }
 
     public void driveCars() throws  CarManagerReport {
@@ -47,11 +51,11 @@ final public class CarManager {
                 }
             }
         }catch (Breakdown breakdown){
-            throw createReport(breakdown.getMessage(), breakdown.getConcernedCar());
+            throw new CarManagerReport(this.allCars, breakdown.getMessage(), breakdown.getConcernedCar());
         }
     }
 
-    public CarManagerReport createReport(String reason, @Nullable Car concernedCar) {
-        return new CarManagerReport(this.allCars, reason, concernedCar);
+    public CarManagerReport createReport(String reason) {
+        return new CarManagerReport(this.allCars, reason, null);
     }
 }

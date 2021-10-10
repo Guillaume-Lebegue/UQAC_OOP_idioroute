@@ -28,6 +28,12 @@ public abstract class Car {
         this.manager = manager;
     }
 
+    public final void init(Highway highway, Interchange from) {
+        setHighway(highway);
+        highway.addToAllCars(this);
+        setEnterPosition(from.getPosition());
+    }
+
     public final void drive(){
         if(breakdown == null && highway != null) {
             final float elapsedTime = 60; // 60 secondes

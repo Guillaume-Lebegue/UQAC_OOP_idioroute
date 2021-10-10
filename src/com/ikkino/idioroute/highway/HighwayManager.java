@@ -16,10 +16,16 @@ final public class HighwayManager {
 
     public void start(){
         int loop = 200;
+        int beforeNewCar = 0;
+
         try {
             //noinspection InfiniteLoopStatement
             while (true) {
-                this.carManager.addCar(this.highway);
+                if (beforeNewCar == 0) {
+                    this.carManager.addCar(this.highway);
+                    beforeNewCar = 3;
+                } else beforeNewCar--;
+
                 this.carManager.driveCars();
                 this.carManager.checkCollisions();
                 if (loop-- <= 0) throw this.carManager.createReport("Idioroute stop for the night");

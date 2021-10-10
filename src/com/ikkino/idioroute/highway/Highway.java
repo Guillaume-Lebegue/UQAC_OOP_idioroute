@@ -34,6 +34,8 @@ public class Highway {
         return allCars;
     }
 
+    public void addToAllCars(Car car) { allCars.add(car); }
+
     public List<Interchange> getAllInterchange(){
         return allInterchange;
     }
@@ -51,8 +53,10 @@ public class Highway {
         else{
             if(interchange.getInterchangeUp() != null) {
                 interchange.getInterchangeUp().allCars.add(car);
+                car.setHighway(interchange.getInterchangeUp());
+            } else {
+                car.getOut();
             }
-            car.setHighway(interchange.getInterchangeUp());
         }
     }
 }

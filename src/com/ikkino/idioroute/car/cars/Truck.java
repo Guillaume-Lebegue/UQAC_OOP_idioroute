@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Truck extends Car {
-    private final float MYSPEED = 8f;
+    private final float MYSPEED = 15f;
 
     public Truck(CarManager manager){
         super(manager);

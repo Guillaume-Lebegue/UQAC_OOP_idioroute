@@ -7,7 +7,6 @@ import java.util.stream.Collectors;
 
 import com.ikkino.idioroute.highway.Highway;
 import com.ikkino.idioroute.highway.Interchange;
-import org.jetbrains.annotations.Nullable;
 
 final public class CarManager {
     final private List<Car> allCars;
@@ -25,8 +24,7 @@ final public class CarManager {
         Car newCar = carFactory.createCar();
 
         allCars.add(newCar);
-        where.carChangeHighway(newCar, upInterchange.get(pick));
-        newCar.setHighway(where);
+        newCar.init(where, upInterchange.get(pick));
     }
 
     public void removeCar(Car car) {
@@ -35,8 +33,6 @@ final public class CarManager {
 
     public void driveCars() throws  CarManagerReport {
         allCars.forEach(Car::drive);
-        if(allCars.size() > 0)
-            System.out.println(allCars.get(0).getDisplay());
     }
 
     public void checkCollisions() throws CarManagerReport {

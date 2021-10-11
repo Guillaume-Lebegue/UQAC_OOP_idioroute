@@ -1,11 +1,22 @@
 package com.ikkino.idioroute.highway;
 
+import com.ikkino.idioroute.highway.materials.Asphalte;
+import com.ikkino.idioroute.highway.materials.Ciment;
+import com.ikkino.idioroute.highway.materials.Goudron;
+import com.ikkino.idioroute.highway.materials.Pave;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.function.Supplier;
 
 public class HighwayBuilder {
-    final private List <Material> materials = new ArrayList<>(List.of(new Asphalte(), new Ciment(), new Goudron(), new Pave()));
+    final private List<Supplier<Material>> materials = new ArrayList<>(List.of(
+            Asphalte::new,
+            Ciment::new,
+            Goudron::new,
+            Pave::new
+    ));
 
     private List<Highway> createAllHighways(int nbOfHighways) {
         List<Highway> highways = new ArrayList<>();
@@ -15,7 +26,7 @@ public class HighwayBuilder {
         for (int i = 0; i < nbOfHighways; i++) {
             int materialId = rand.nextInt(this.materials.size());
             System.out.println("Creating highway: " + i + " with radius = " + radius + " and with material: " + materialId);
-            highways.add(new Highway(radius, this.materials.get(materialId), i+1));
+            highways.add(new Highway(radius, this.materials.get(materialId).get(), i+1));
             radius -= radius / nbOfHighways;
         }
         return highways;

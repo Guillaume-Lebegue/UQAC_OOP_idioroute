@@ -1,6 +1,8 @@
-package com.ikkino.idioroute.highway;
+package com.ikkino.idioroute.highway.materials;
 
-public class Pave implements Material{
+import com.ikkino.idioroute.highway.Material;
+
+public class Pave implements Material {
 
     public final float coefficient = 0.6f;
 

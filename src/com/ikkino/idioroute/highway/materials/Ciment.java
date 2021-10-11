@@ -1,4 +1,6 @@
-package com.ikkino.idioroute.highway;
+package com.ikkino.idioroute.highway.materials;
+
+import com.ikkino.idioroute.highway.Material;
 
 public class Ciment implements Material {
 
